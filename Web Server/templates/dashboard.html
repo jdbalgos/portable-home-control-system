@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+ <meta http-equiv="refresh" content="2; URL=http://bfgcontrolsystem.tk/dashboard">
+  <div class="jumbotron text-center">
+    <h1>Dashboard</h1>
+	<table class="table table-hover">
+	<thead>
+		<tr>
+			<th>Device Name</th>
+			<th>Switch Name</th> 
+			<th>Status</th>
+			<th>Recent Command</th>
+			<th>Switch Name</th> 
+			<th>Status</th>
+			<th>Recent Command</th>
+			<th>Device Status</th>
+		</tr>
+	</thead>
+	{% for value in rows %}
+	
+	<tbody>
+	
+		<th>{{ value["device_name"] }}</th>
+		<th>{{ value["switch_one_name"] }}</th> 
+		<th>
+			<form method="post" action="/test">
+			<input type="hidden" name="device_name" value="{{ value["device_name"] }}" >
+			<input type="hidden" name="switch_position" value="1">
+			<button type="submit" name="status" value="{{ value["status_one"] }}" class="btn btn-primary"{% if value["device_status"] == "OFFLINE" %}disabled {%else%} {% endif %}>
+			{{ value["status_one"] }}
+			</button>
+			</form>
+		</th>
+		<th>{{ value["recent_status_one"] }}</th>
+		<th>{{ value["switch_two_name"] }}</th> 
+		<th>
+			<form method="post" action="/test">
+			<input type="hidden" name="device_name" value="{{ value["device_name"] }}" >
+			<input type="hidden" name="switch_position" value="2">
+			<button type="submit" name="status" value="{{ value["status_two"] }}" class="btn btn-primary"  {% if value["device_status"] == "OFFLINE" %}disabled {%else%} {% endif %}>
+			{{ value["status_two"] }}
+			</button>
+			</form>
+		</th>
+		<th>{{ value["recent_status_two"] }}</th>
+		<th>{{ value["device_status"] }}</th>
+	</tbody>
+
+	{% endfor %}
+	</table>
+	</div>
+
+{% endblock %}

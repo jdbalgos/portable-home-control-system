@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<credentials>
+	<user>
+		<username>admin</username>
+		<password>4dm1n</password>
+		<rpi_id>all</rpi_id>
+	</user>
+	<user>
+		<username>user1</username>
+		<password>user1</password>
+		<rpi_id>one</rpi_id>
+	</user>
+</credentials>
